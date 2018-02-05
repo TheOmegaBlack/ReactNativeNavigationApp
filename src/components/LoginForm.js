@@ -4,7 +4,12 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button, Spinner } from './common';
 import { emailChanged, passwordChanged, loginUser } from '../actions'
+
 class LoginForm extends Component {
+  static navigationOptions = {
+    title: 'Please login',
+  }
+  
   onEmailChanged = text => {
     this.props.emailChanged(text)
   }

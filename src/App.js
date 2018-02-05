@@ -6,7 +6,7 @@ import { composeWithDevTools } from 'remote-redux-devtools';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 import reducers from './reducers';
-import LoginForm from './components/LoginForm';
+import RootStack from './Router';
 
 class App extends Component {
   componentWillMount() {
@@ -25,7 +25,7 @@ class App extends Component {
     const store = createStore(reducers, composeWithDevTools(applyMiddleware(ReduxThunk)));
     return (
       <Provider store={store}>
-        <LoginForm />
+        <RootStack />
       </Provider>
     )
   }
