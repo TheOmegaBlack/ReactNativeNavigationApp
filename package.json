@@ -3,7 +3,8 @@
   "version": "0.0.1",
   "private": true,
   "scripts": {
-    "start": "react-native start --port=8080",
+    "start": "react-native start",
+    "start:work": "react-native start --port=8080",
     "android": "react-native run-android",
     "test": "jest"
   },
@@ -11,6 +12,7 @@
     "react": "16.2.0",
     "react-native": "0.52.2",
     "react-navigation": "^1.0.0-beta.27",
+    "react-navigation-redux-helpers": "^1.0.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0"

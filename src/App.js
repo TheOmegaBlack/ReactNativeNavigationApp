@@ -1,12 +1,43 @@
 import React, { Component } from 'react';
 // import { View, Text } from 'react-native';
-import { Provider } from 'react-redux';
+import { Provider, connect } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
+import {
+  addNavigationHelpers,
+} from 'react-navigation';
+import {
+  createReduxBoundAddListener,
+  createReactNavigationReduxMiddleware,
+} from 'react-navigation-redux-helpers';
 import { composeWithDevTools } from 'remote-redux-devtools';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 import reducers from './reducers';
-import RootStack from './Router';
+import RootStack from './Router'
+
+const middleware = createReactNavigationReduxMiddleware(
+  "root",
+  state => state.nav,
+);
+const addListener = createReduxBoundAddListener("root");
+
+class NavApp extends Component {
+  render() {
+    return (
+      <RootStack navigation={addNavigationHelpers({
+        dispatch: this.props.dispatch,
+        state: this.props.nav,
+        addListener,
+      })} />
+    );
+  }
+}
+
+const mapStateToProps = (state) => ({
+  nav: state.nav
+});
+
+const AppWithNavigationState = connect(mapStateToProps)(NavApp);
 
 class App extends Component {
   componentWillMount() {
@@ -20,12 +51,12 @@ class App extends Component {
     };
     firebase.initializeApp(config);
   }
-  
+
   render() {
-    const store = createStore(reducers, composeWithDevTools(applyMiddleware(ReduxThunk)));
+    const store = createStore(reducers, composeWithDevTools(applyMiddleware(ReduxThunk, middleware)));
     return (
       <Provider store={store}>
-        <RootStack />
+        <AppWithNavigationState />
       </Provider>
     )
   }

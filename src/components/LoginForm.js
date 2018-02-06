@@ -9,20 +9,20 @@ class LoginForm extends Component {
   static navigationOptions = {
     title: 'Please login',
   }
-  
+
   onEmailChanged = text => {
     this.props.emailChanged(text)
   }
-  
+
   onPasswordChanged = text => {
     this.props.passwordChanged(text)
   }
-  
+
   onButtonPress = () => {
     const { email, password } = this.props;
     this.props.loginUser({ email, password })
   }
-  
+
   renderError = () => {
     if (this.props.error) {
       return (
@@ -34,19 +34,19 @@ class LoginForm extends Component {
       )
     }
   }
-  
+
   renderButton = () => {
     if (this.props.loading) {
       return <Spinner size="large" />
     }
-    
+
     return (
       <Button onPress={this.onButtonPress}>
         Login
       </Button>
     )
   }
-  
+
   render() {
     return (
       <Card>
@@ -58,8 +58,8 @@ class LoginForm extends Component {
             value={this.props.email}
           />
         </CardSection>
-        
-        
+
+
         <CardSection>
           <Input
             secureTextEntry
@@ -69,9 +69,9 @@ class LoginForm extends Component {
             value={this.props.password}
           />
         </CardSection>
-        
+
         {this.renderError()}
-        
+
         <CardSection>
           {this.renderButton()}
         </CardSection>
@@ -89,6 +89,7 @@ const styles = {
 }
 
 const mapStateToProps = state => {
+  console.log(state)
   return {
     email: state.auth.email,
     password: state.auth.password,
