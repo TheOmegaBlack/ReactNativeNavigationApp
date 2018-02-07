@@ -12,7 +12,7 @@ const Header = (props) => {
 
 const styles = {
   textStyle: {
-    fontSize: 20
+    fontSize: 20,
   },
   viewStyle: {
     backgroundColor: '#F8F8F8',
@@ -23,8 +23,8 @@ const styles = {
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.2,
     elevation: 2,
-    position: 'relative'
-  }
+    position: 'relative',
+  },
 };
 
 export { Header };

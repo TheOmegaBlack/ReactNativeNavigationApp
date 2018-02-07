@@ -1,26 +1,26 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native'
-import { bindActionCreators } from 'redux'
+import { View, Text } from 'react-native';
+import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button, Spinner } from './common';
-import { emailChanged, passwordChanged, loginUser } from '../actions'
+import { emailChanged, passwordChanged, loginUser } from '../actions';
 
 class LoginForm extends Component {
   static navigationOptions = {
     title: 'Please login',
   }
 
-  onEmailChanged = text => {
-    this.props.emailChanged(text)
+  onEmailChanged = (text) => {
+    this.props.emailChanged(text);
   }
 
-  onPasswordChanged = text => {
-    this.props.passwordChanged(text)
+  onPasswordChanged = (text) => {
+    this.props.passwordChanged(text);
   }
 
   onButtonPress = () => {
     const { email, password } = this.props;
-    this.props.loginUser({ email, password })
+    this.props.loginUser({ email, password });
   }
 
   renderError = () => {
@@ -31,20 +31,20 @@ class LoginForm extends Component {
             {this.props.error}
           </Text>
         </View>
-      )
+      );
     }
   }
 
   renderButton = () => {
     if (this.props.loading) {
-      return <Spinner size="large" />
+      return <Spinner size="large" />;
     }
 
     return (
       <Button onPress={this.onButtonPress}>
         Login
       </Button>
-    )
+    );
   }
 
   render() {
@@ -85,11 +85,11 @@ const styles = {
     fontSize: 20,
     alignSelf: 'center',
     color: 'red',
-  }
-}
+  },
+};
 
-const mapStateToProps = state => {
-  console.log(state)
+const mapStateToProps = (state) => {
+  console.log(state);
   return {
     email: state.auth.email,
     password: state.auth.password,
@@ -98,12 +98,10 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return bindActionCreators({
-    emailChanged,
-    passwordChanged,
-    loginUser
-  }, dispatch)
-}
+const mapDispatchToProps = dispatch => bindActionCreators({
+  emailChanged,
+  passwordChanged,
+  loginUser,
+}, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);

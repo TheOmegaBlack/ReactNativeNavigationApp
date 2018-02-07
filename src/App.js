@@ -12,29 +12,30 @@ import {
 import { composeWithDevTools } from 'remote-redux-devtools';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
+import RootStack from './Router';
 import reducers from './reducers';
-import RootStack from './Router'
 
-const middleware = createReactNavigationReduxMiddleware(
-  "root",
-  state => state.nav,
-);
-const addListener = createReduxBoundAddListener("root");
+
+const middleware = createReactNavigationReduxMiddleware('root', state => state.nav);
+
+const addListener = createReduxBoundAddListener('root');
 
 class NavApp extends Component {
   render() {
     return (
-      <RootStack navigation={addNavigationHelpers({
+      <RootStack
+        navigation={addNavigationHelpers({
         dispatch: this.props.dispatch,
         state: this.props.nav,
         addListener,
-      })} />
+      })}
+      />
     );
   }
 }
 
-const mapStateToProps = (state) => ({
-  nav: state.nav
+const mapStateToProps = state => ({
+  nav: state.nav,
 });
 
 const AppWithNavigationState = connect(mapStateToProps)(NavApp);
@@ -42,12 +43,12 @@ const AppWithNavigationState = connect(mapStateToProps)(NavApp);
 class App extends Component {
   componentWillMount() {
     const config = {
-      apiKey: "AIzaSyCw5IVqBnEA1fZlkAZGf9eiTWbzA1oYmqA",
-      authDomain: "manager-cd5ca.firebaseapp.com",
-      databaseURL: "https://manager-cd5ca.firebaseio.com",
-      projectId: "manager-cd5ca",
-      storageBucket: "",
-      messagingSenderId: "987137678811"
+      apiKey: 'AIzaSyCw5IVqBnEA1fZlkAZGf9eiTWbzA1oYmqA',
+      authDomain: 'manager-cd5ca.firebaseapp.com',
+      databaseURL: 'https://manager-cd5ca.firebaseio.com',
+      projectId: 'manager-cd5ca',
+      storageBucket: '',
+      messagingSenderId: '987137678811',
     };
     firebase.initializeApp(config);
   }
@@ -58,7 +59,7 @@ class App extends Component {
       <Provider store={store}>
         <AppWithNavigationState />
       </Provider>
-    )
+    );
   }
 }
 

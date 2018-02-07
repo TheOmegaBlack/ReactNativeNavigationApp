@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { View, Text } from 'react-native'
+import React, { Component } from 'react';
+import { View, Text } from 'react-native';
 
 class EmployeeList extends Component {
   render() {
@@ -13,8 +13,8 @@ class EmployeeList extends Component {
         <Text>Employee List</Text>
         <Text>Employee List</Text>
       </View>
-    )
+    );
   }
 }
 
-export default EmployeeList
+export default EmployeeList;

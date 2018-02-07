@@ -1,13 +1,15 @@
 import React from 'react';
 import { TextInput, View, Text, Platform } from 'react-native';
 
-const Input = ({ label, value, onChangeText, placeholder, secureTextEntry }) => {
+const Input = ({
+  label, value, onChangeText, placeholder, secureTextEntry,
+}) => {
   const { inputStyle, labelStyle, containerStyle } = styles;
   return (
     <View style={containerStyle}>
       <Text style={labelStyle}>{label}</Text>
       <TextInput
-        autoCapitalize='none'
+        autoCapitalize="none"
         autoCorrect={false}
         value={value}
         onChangeText={onChangeText}
@@ -30,8 +32,8 @@ const styles = {
     flex: 2,
     ...Platform.select({
       android: {
-        paddingBottom: 7
-      }
+        paddingBottom: 7,
+      },
     }),
   },
   labelStyle: {
@@ -43,8 +45,8 @@ const styles = {
     height: 40,
     flex: 1,
     flexDirection: 'row',
-    alignItems: 'center'
-  }
+    alignItems: 'center',
+  },
 };
 
 export { Input };

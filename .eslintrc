@@ -1,13 +1,8 @@
 {
-  "extends": "rallycoding",
-  "rules": {
-    "react/require-extension": "off",
-    "jsx-a11y/label-has-for": "off"
-  },
   "env": {
-    "browser": true
+    "node": true,
+    "es6": true
   },
-  "globals": {
-    "fetch": true
-  }
+  "parser": "babel-eslint",
+  "extends": "airbnb"
 }
