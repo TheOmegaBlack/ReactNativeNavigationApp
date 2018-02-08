@@ -1,18 +1,27 @@
 import { StackNavigator } from 'react-navigation';
 import LoginForm from './components/LoginForm';
 import EmployeeList from './components/EmployeeList';
+import ModalTest from './components/ModalTest';
 
-const RootStack = StackNavigator(
-  {
-    LoginForm: {
-      screen: LoginForm,
-    },
-    EmployeeList: {
-      screen: EmployeeList,
+const MainStack = StackNavigator({
+  EmployeeList: {
+    screen: EmployeeList,
+    navigationOptions: {
+      headerStyle: {
+        backgroundColor: 'blue',
+      },
+      headerTintColor: '#fff',
+      headerTitleStyle: {
+        fontWeight: 'bold',
+        alignSelf: 'center',
+      },
     },
   },
-  {
-    initialRouteName: 'LoginForm',
+});
+
+const AuthStack = StackNavigator({
+  LoginForm: {
+    screen: LoginForm,
     navigationOptions: {
       headerStyle: {
         backgroundColor: '#f4511e',
@@ -23,6 +32,25 @@ const RootStack = StackNavigator(
         alignSelf: 'center',
       },
     },
+  },
+});
+
+const RootStack = StackNavigator(
+  {
+    Auth: {
+      screen: AuthStack,
+    },
+    Main: {
+      screen: MainStack,
+    },
+    Modal: {
+      screen: ModalTest,
+    },
+  },
+  {
+    headerMode: 'none',
+    initialRouteName: 'Auth',
+    mode: 'modal',
   },
 );
 

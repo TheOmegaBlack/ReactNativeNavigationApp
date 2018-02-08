@@ -1,10 +1,13 @@
+import { NavigationActions } from 'react-navigation';
 import RootStack from '../Router';
 
-const initialState =
-  RootStack.router.getStateForAction(RootStack.router.getActionForPathAndParams('LoginForm'));
+const initialNavState = RootStack.router.getStateForAction(NavigationActions.init());
+// const initialState =
+//   RootStack.router.getStateForAction(RootStack.router.getActionForPathAndParams('Auth'));
 
-export default (state = initialState, action) => {
-  const nextState = RootStack.router.getStateForAction(action, state);
-
-  return nextState || state;
+export default (state = initialNavState, action) => {
+  console.log(state);
+  const NewState = RootStack.router.getStateForAction(action, state);
+  console.log(NewState);
+  return NewState || state;
 };

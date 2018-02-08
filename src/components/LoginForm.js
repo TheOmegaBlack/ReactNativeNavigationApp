@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button, Spinner } from './common';
-import { emailChanged, passwordChanged, loginUser } from '../actions';
+import { emailChanged, passwordChanged, loginUser, openModal } from '../actions';
 
 class LoginForm extends Component {
   static navigationOptions = {
@@ -33,7 +33,7 @@ class LoginForm extends Component {
         </View>
       );
     }
-  }
+  };
 
   renderButton = () => {
     if (this.props.loading) {
@@ -45,7 +45,7 @@ class LoginForm extends Component {
         Login
       </Button>
     );
-  }
+  };
 
   render() {
     return (
@@ -75,6 +75,13 @@ class LoginForm extends Component {
         <CardSection>
           {this.renderButton()}
         </CardSection>
+        <CardSection>
+          <Button
+            onPress={this.props.openModal}
+          >
+            Jello
+          </Button>
+        </CardSection>
       </Card>
     );
   }
@@ -88,20 +95,18 @@ const styles = {
   },
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  return {
-    email: state.auth.email,
-    password: state.auth.password,
-    error: state.auth.error,
-    loading: state.auth.loading,
-  };
-};
+const mapStateToProps = state => ({
+  email: state.auth.email,
+  password: state.auth.password,
+  error: state.auth.error,
+  loading: state.auth.loading,
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   emailChanged,
   passwordChanged,
   loginUser,
+  openModal,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
