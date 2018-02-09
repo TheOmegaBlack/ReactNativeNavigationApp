@@ -1,5 +1,6 @@
 import { StackNavigator } from 'react-navigation';
 import LoginForm from './components/LoginForm';
+import EmployeeCreate from './components/EmployeeCreate';
 import EmployeeList from './components/EmployeeList';
 import ModalTest from './components/ModalTest';
 
@@ -16,6 +17,9 @@ const MainStack = StackNavigator({
         alignSelf: 'center',
       },
     },
+  },
+  EmployeeCreate: {
+    screen: EmployeeCreate,
   },
 });
 
@@ -49,8 +53,6 @@ const RootStack = StackNavigator(
   },
   {
     headerMode: 'none',
-    initialRouteName: 'Auth',
-    mode: 'modal',
   },
 );
 

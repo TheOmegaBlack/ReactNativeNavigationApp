@@ -3,7 +3,7 @@ import { View, Text } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { Card, CardSection, Input, Button, Spinner } from './common';
-import { emailChanged, passwordChanged, loginUser, openModal } from '../actions';
+import { emailChanged, passwordChanged, loginUser, navigate } from '../actions';
 
 class LoginForm extends Component {
   static navigationOptions = {
@@ -77,7 +77,7 @@ class LoginForm extends Component {
         </CardSection>
         <CardSection>
           <Button
-            onPress={this.props.openModal}
+            onPress={() => this.props.navigate('Modal')}
           >
             Jello
           </Button>
@@ -106,7 +106,7 @@ const mapDispatchToProps = dispatch => bindActionCreators({
   emailChanged,
   passwordChanged,
   loginUser,
-  openModal,
+  navigate,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginForm);
