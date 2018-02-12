@@ -23,7 +23,7 @@ class ModalScreen extends React.Component {
 const mapStateToProps = state =>
   ({
 
-  })
+  });
 
 const mapDispatchToProps = dispatch => bindActionCreators({
   goBack,

@@ -1,8 +1,9 @@
+/* eslint-disable react/jsx-filename-extension */
 import React, { Component } from 'react';
 // import { View, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import { composeWithDevTools } from 'remote-redux-devtools';
+import { composeWithDevTools } from 'redux-devtools-extension';
 import ReduxThunk from 'redux-thunk';
 import firebase from 'firebase';
 import AppWithNavigationState, { middleware } from './NavApp';

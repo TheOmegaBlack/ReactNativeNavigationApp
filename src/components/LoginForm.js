@@ -75,13 +75,6 @@ class LoginForm extends Component {
         <CardSection>
           {this.renderButton()}
         </CardSection>
-        <CardSection>
-          <Button
-            onPress={() => this.props.navigate('Modal')}
-          >
-            Jello
-          </Button>
-        </CardSection>
       </Card>
     );
   }

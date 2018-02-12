@@ -1,6 +1,7 @@
 import firebase from 'firebase';
 import { NavigationActions } from 'react-navigation';
-import { EMAIL_CHANGED, PASSWORD_CHANGED, LOGIN_USER_SUCCESS, LOGIN_USER_FAIL, LOGIN_USER } from './types';
+import { EMAIL_CHANGED, LOGIN_USER, LOGIN_USER_FAIL, LOGIN_USER_SUCCESS, PASSWORD_CHANGED } from './types';
+import { navigate } from './NavActions';
 
 export const emailChanged = text => ({
   type: EMAIL_CHANGED,
@@ -16,7 +17,6 @@ const loginUserFail = (dispatch) => {
   dispatch({ type: LOGIN_USER_FAIL });
 };
 
-export const navigate = navigation => NavigationActions.navigate({ routeName: navigation });
 
 export const goBack = () => NavigationActions.back();
 

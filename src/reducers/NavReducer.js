@@ -7,5 +7,6 @@ const initialNavState = RootStack.router.getStateForAction(NavigationActions.ini
 
 export default (state = initialNavState, action) => {
   const NewState = RootStack.router.getStateForAction(action, state);
+
   return NewState || state;
 };

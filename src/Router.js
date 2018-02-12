@@ -3,6 +3,7 @@ import LoginForm from './components/LoginForm';
 import EmployeeCreate from './components/EmployeeCreate';
 import EmployeeList from './components/EmployeeList';
 import ModalTest from './components/ModalTest';
+import EmployeeEdit from './components/EmployeeEdit';
 
 const MainStack = StackNavigator({
   EmployeeList: {
@@ -20,6 +21,9 @@ const MainStack = StackNavigator({
   },
   EmployeeCreate: {
     screen: EmployeeCreate,
+  },
+  EmployeeEdit: {
+    screen: EmployeeEdit,
   },
 });
 

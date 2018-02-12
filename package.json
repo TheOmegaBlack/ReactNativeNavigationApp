@@ -11,14 +11,16 @@
   },
   "dependencies": {
     "firebase": "^4.9.1",
+    "lodash": "^4.17.5",
     "react": "16.2.0",
     "react-native": "0.52.2",
+    "react-native-communications": "^2.2.1",
     "react-navigation": "^1.0.0-beta.27",
     "react-navigation-redux-helpers": "^1.0.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0",
-    "remote-redux-devtools": "^0.5.12"
+    "redux-devtools-extension": "^2.13.2",
+    "redux-thunk": "^2.2.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

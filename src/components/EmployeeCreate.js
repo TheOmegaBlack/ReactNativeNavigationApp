@@ -1,54 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Picker } from 'react-native';
-import { employeeUpdate } from '../actions';
-import { Card, CardSection, Input, Button } from './common';
+import { employeeUpdate, employeeCreate, newEmployee } from '../actions';
+import { Card, CardSection, Button } from './common';
+import EmployeeForm from './EmployeeForm';
 
 class EmployeeCreate extends Component {
+  static navigationOptions = {
+    title: 'Employee Create',
+  }
+  componentWillMount() {
+    this.props.newEmployee();
+  }
+  onButtonPress() {
+    const { name, phone, shift } = this.props;
+    this.props.employeeCreate({ name, phone, shift: shift || 'Monday' });
+  }
   render() {
     return (
       <Card>
+        <EmployeeForm {...this.props} />
         <CardSection>
-          <Input
-            label="Name"
-            placeholder="Name"
-            value={this.props.name}
-            onChangeText={text => this.props.employeeUpdate({ prop: 'name', value: text })}
-          />
-        </CardSection>
-
-        <CardSection>
-          <Input
-            label="Phone"
-            placeholder="555-555-5555"
-            value={this.props.phone}
-            onChangeText={text => this.props.employeeUpdate({ prop: 'phone', value: text })}
-          />
-        </CardSection>
-        <CardSection>
-          <Picker>
-            <Picker.Item label="Monday" value="Monday" />
-            <Picker.Item label="Tuesday" value="Tuesday" />
-            <Picker.Item label="Wednesday" value="Wednesday" />
-            <Picker.Item label="Thursday" value="Thursday" />
-            <Picker.Item label="Friday" value="Friday" />
-            <Picker.Item label="Saturday" value="Saturday" />
-            <Picker.Item label="Sunday" value="Sunday" />
-          </Picker>
-        </CardSection>
-        <CardSection>
-          <Button>
+          <Button onPress={() => this.onButtonPress()}>
             Create
           </Button>
         </CardSection>
-      </Card>
-    );
+      </Card>);
   }
 }
 
 const mapStateToProps = (state) => {
-  const { name, phone, shift } = state.employees;
+  const { name, phone, shift } = state.employeesForm;
   return { name, phone, shift };
 };
 
-export default connect(mapStateToProps, { employeeUpdate })(EmployeeCreate);
+export default connect(
+  mapStateToProps,
+  { employeeCreate, employeeUpdate, newEmployee },
+)(EmployeeCreate);
